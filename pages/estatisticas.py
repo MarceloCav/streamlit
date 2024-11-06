@@ -16,14 +16,14 @@ def exibir_graficos():
         st.text("Estatísticas do dataset:")
         st.dataframe(df.describe())
 
-    colunas_faltantes = [col for col in ['height', 'width', 'depth', 'net_weight', 'gross_weight', 'application'] if col not in df.columns]
+    colunas_faltantes = [col for col in ['height', 'width', 'length', 'net_weight', 'gross_weight', 'application'] if col not in df.columns]
 
-    if all(col in df.columns for col in ['height', 'width', 'depth', 'net_weight', 'gross_weight', 'application']):
-        colunas = df[['height', 'width', 'depth', 'net_weight', 'gross_weight', 'application']]
+    if all(col in df.columns for col in ['height', 'width', 'length', 'net_weight', 'gross_weight', 'application']):
+        colunas = df[['height', 'width', 'length', 'net_weight', 'gross_weight', 'application']]
         colunas['app_truncated'] = colunas['application'].str[:80]
         try:
-            fig_height_depth = px.scatter(colunas, x='height', y='depth', title='Dispersão entre Altura e Comprimento', hover_name='app_truncated', color='depth')
-            st.plotly_chart(fig_height_depth)
+            fig_height_length = px.scatter(colunas, x='height', y='length', title='Dispersão entre Altura e Comprimento', hover_name='app_truncated', color='length')
+            st.plotly_chart(fig_height_length)
 
             fig_height_width = px.scatter(colunas, x='height', y='width', title='Dispersão entre Altura e Largura', hover_name='app_truncated', color='width')
             st.plotly_chart(fig_height_width)
