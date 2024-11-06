@@ -16,11 +16,11 @@ def exibir_graficos():
         st.text("Estatísticas do dataset:")
         st.dataframe(df.describe())
 
-    colunas_faltantes = [col for col in ['height', 'width', 'length', 'net_weight', 'gross_weight', 'application'] if col not in df.columns]
+    colunas_faltantes = [col for col in ['height', 'width', 'length', 'net_weight', 'gross_weight', 'applications'] if col not in df.columns]
 
-    if all(col in df.columns for col in ['height', 'width', 'length', 'net_weight', 'gross_weight', 'application']):
-        colunas = df[['height', 'width', 'length', 'net_weight', 'gross_weight', 'application']]
-        colunas['app_truncated'] = colunas['application'].str[:80]
+    if all(col in df.columns for col in ['height', 'width', 'length', 'net_weight', 'gross_weight', 'applications']):
+        colunas = df[['height', 'width', 'length', 'net_weight', 'gross_weight', 'applications']]
+        colunas['app_truncated'] = colunas['applications'].str[:80]
         try:
             fig_height_length = px.scatter(colunas, x='height', y='length', title='Dispersão entre Altura e Comprimento', hover_name='app_truncated', color='length')
             st.plotly_chart(fig_height_length)
