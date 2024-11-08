@@ -4,3 +4,4 @@ datetime
 plotly
 reportlab
 unidecode
+psycopg2-binary
